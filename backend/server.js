@@ -22,6 +22,11 @@ const jobSchema = new mongoose.Schema({
 
 const Job = mongoose.model("Job", jobSchema);
 
+// Test API
+app.get("/", (req, res) => {
+  res.send("Student Job Tracker API Running ✅");
+});
+
 // Create
 app.post("/jobs", async (req, res) => {
   const job = new Job(req.body);
