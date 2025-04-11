@@ -1,6 +1,7 @@
 # Student Job Tracker
 
-![Student Job Tracker Screenshot]![image](https://github.com/user-attachments/assets/39fa0348-450c-4991-aafb-3009635dbace)
+![Student Job Tracker Screenshot]![image](https://github.com/user-attachments/assets/39fa0348-450c-4991-aafb-3009635dbace)![image](https://github.com/user-attachments/assets/968c1fff-f59f-4d0e-bef7-00d0bfcfcf5c)
+
 
 
 **Student Job Tracker** is a full-stack MERN application designed to help students manage their job applications efficiently. Built with MongoDB, Express.js, React (using Vite), and Node.js, it allows users to add, filter, update, and delete job applications with a clean, responsive UI. Features include form validation, a loading spinner, and popup notifications for user feedback.
