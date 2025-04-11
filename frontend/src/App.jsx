@@ -2,8 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 
-const API =
-  "http://localhost:5000" || "https://student-job-backend-t6er.onrender.com";
+const API = "https://student-job-backend-t6er.onrender.com";
 
 function App() {
   const [jobs, setJobs] = useState([]);

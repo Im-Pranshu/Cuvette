@@ -1,12 +1,40 @@
-# React + Vite
+# Student Job Tracker
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Student Job Tracker Screenshot](screenshot.png)
 
-Currently, two official plugins are available:
+**Student Job Tracker** is a full-stack MERN application designed to help students manage their job applications efficiently. Built with MongoDB, Express.js, React (using Vite), and Node.js, it allows users to add, filter, update, and delete job applications with a clean, responsive UI. Features include form validation, a loading spinner, and popup notifications for user feedback.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- **Add Job Applications**: Input details like Company, Role, Status (Applied, Interview, Offer, Rejected), Date, and Link. Form validation ensures all fields are filled.
+- **List Applications**: View all job applications in a responsive card layout.
+- **Filter Applications**: Filter by status or application date for quick access.
+- **Update Status**: Change the status of any application (e.g., from Applied to Interview).
+- **Delete Applications**: Remove unwanted job entries.
+- **User Feedback**: Popups confirm actions (add, update, delete) or warn about empty/incomplete forms.
+- **Loading Spinner**: Displays a centered loader during job creation for a smooth experience.
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices.
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Tech Stack
+
+- **Frontend**: React.js (Vite), HTML, CSS
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (MongoDB Atlas or local)
+- **Tools**: Vite (for fast frontend build), Axios (for API requests), MongoDB Driver
+- **Deployment**: Frontend (Vercel/Netlify), Backend (Render/Heroku)
+
+## Prerequisites
+
+- [Node.js](https://nodejs.org/) (v16 or higher)
+- [npm](https://www.npmjs.com/) (comes with Node.js) or [yarn](https://yarnpkg.com/)
+- [MongoDB](https://www.mongodb.com/) (local installation or MongoDB Atlas account)
+- [Git](https://git-scm.com/) (for cloning the repository)
+- A code editor like [VS Code](https://code.visualstudio.com/)
+
+## Project Setup
+
+1. **Clone the Repository**
+   ```bash
+   git clone https://github.com/your-username/student-job-tracker.git
+   cd student-job-tracker
+   ```
