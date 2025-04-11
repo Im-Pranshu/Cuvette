@@ -18,6 +18,7 @@ function App() {
   const [statusFilter, setStatusFilter] = useState("All");
   const [dateFilter, setDateFilter] = useState("");
   const [popup, setPopup] = useState({ visible: false, message: "" });
+  const [isLoading, setIsLoading] = useState(false); // New loading state
 
   const fetchJobs = async () => {
     const res = await axios.get(`${API}/jobs`);
@@ -54,13 +55,47 @@ function App() {
     }, 2000);
   };
 
-  const handleAdd = async () => {
+  // Check if all form fields are empty
+  const isFormEmpty = () => {
+    return (
+      form.company.trim() === "" &&
+      form.role.trim() === "" &&
+      form.status === "Applied" &&
+      form.date === "" &&
+      form.link.trim() === ""
+    );
+  };
+
+  // Check if all form fields are filled
+  const isFormValid = () => {
+    return (
+      form.company.trim() !== "" &&
+      form.role.trim() !== "" &&
+      form.status !== "" &&
+      form.date !== "" &&
+      form.link.trim() !== ""
+    );
+  };
+
+  const handleAdd = async (e) => {
+    e.preventDefault();
+    if (isFormEmpty()) {
+      showPopup("Please fill all details.");
+      return;
+    }
+    if (!isFormValid()) {
+      showPopup("Please fill all fields.");
+      return;
+    }
+    setIsLoading(true); // Show loader
     try {
       await axios.post(`${API}/jobs`, form);
       setForm({ company: "", role: "", status: "Applied", date: "", link: "" });
-      fetchJobs();
+      await fetchJobs();
+      setIsLoading(false); // Hide loader
       showPopup("Job application added!");
     } catch (error) {
+      setIsLoading(false); // Hide loader
       showPopup("Failed to add job application.");
     }
   };
@@ -88,45 +123,50 @@ function App() {
   return (
     <div className="app-container">
       <h2 className="app-title">🎯 Student Job Tracker</h2>
-      <div className="form-container">
+      <form className="form-container" onSubmit={handleAdd}>
         <input
           className="form-input"
           placeholder="Company"
           value={form.company}
           onChange={(e) => setForm({ ...form, company: e.target.value })}
+          required
         />
         <input
           className="form-input"
           placeholder="Role"
           value={form.role}
           onChange={(e) => setForm({ ...form, role: e.target.value })}
+          required
         />
         <select
           className="form-select"
           value={form.status}
           onChange={(e) => setForm({ ...form, status: e.target.value })}
+          required
         >
-          <option>Applied</option>
-          <option>Interview</option>
-          <option>Offer</option>
-          <option>Rejected</option>
+          <option value="Applied">Applied</option>
+          <option value="Interview">Interview</option>
+          <option value="Offer">Offer</option>
+          <option value="Rejected">Rejected</option>
         </select>
         <input
           className="form-input"
           type="date"
           value={form.date}
           onChange={(e) => setForm({ ...form, date: e.target.value })}
+          required
         />
         <input
           className="form-input"
           placeholder="Link"
           value={form.link}
           onChange={(e) => setForm({ ...form, link: e.target.value })}
+          required
         />
-        <button className="form-button" onClick={handleAdd}>
+        <button className="form-button" type="submit">
           Add Job
         </button>
-      </div>
+      </form>
 
       <hr className="divider" />
 
@@ -198,6 +238,13 @@ function App() {
           </div>
         ))}
       </div>
+
+      {/* Loader Component */}
+      {isLoading && (
+        <div className="loader-overlay">
+          <div className="loader"></div>
+        </div>
+      )}
 
       {/* Popup Component */}
       {popup.visible && (
