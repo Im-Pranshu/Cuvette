@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Production build
+dist/
+build/
+
+# Environment variables
+.env
+.env.*.local
+
+# Cache and logs
+.cache/
+.npm/
+.yarn/
+*.log
+
+# OS-specific
+.DS_Store
+
+# IDEs and editors
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Testing
+coverage/
